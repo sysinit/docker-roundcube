@@ -9,9 +9,9 @@ ENV SERIAL 2015042301
 RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qq -y update; apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
 
 # install needed base packages
-RUN apt-get install -y wget vim
+RUN apt-get install -y wget vim nginx php5-fpm php5-mcrypt php5-intl php5-mysql procps
 
-RUN wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1-complete.tar.gz
+RUN mkdir /srv/www && wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1-complete.tar.gz -O - | tar xz -C /srv/www --strip=1
 
 # ports
 EXPOSE 80 443
