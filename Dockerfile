@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 MAINTAINER Frank Mueller "tmp@sysinit.de"
 
 # increase serial to run everything from here again
-ENV SERIAL 2015041601
+ENV SERIAL 2015042301
 
 # install updates
 RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qq -y update; apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
@@ -11,15 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qq -y updat
 # install needed base packages
 RUN apt-get install -y wget vim
 
-# get owncloud repo key
-RUN wget -O - http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key | apt-key add -
-
-# add owncloud repo
-RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/owncloud.list
-RUN apt-get update
-
-# install owncloud and dependencies
-RUN apt-get install -y owncloud
+RUN wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1-complete.tar.gz
 
 # ports
 EXPOSE 80 443
