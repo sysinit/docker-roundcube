@@ -30,5 +30,4 @@ RUN . /etc/apache2/envvars && chown -R ${APACHE_RUN_USER}:${APACHE_RUN_GROUP} /v
 # ports
 EXPOSE 80 443
 
-ENTRYPOINT [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
-CMD [ "-k", "start" ]
+CMD [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
