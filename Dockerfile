@@ -16,7 +16,7 @@ RUN a2enmod expires && a2enmod headers && a2enmod ssl
 
 RUN  wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1-complete.tar.gz -O - | tar xz -C /var/www --strip=1
 
-ADD ../config.inc.php /var/www/config/
+ADD config.inc.php /var/www/config/
 
 RUN sed -i -re '/^\s*DocumentRoot/s, /.*, /var/www,' \
     /etc/apache2/sites-available/000-default.conf \
