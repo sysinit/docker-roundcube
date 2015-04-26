@@ -10,8 +10,9 @@ RUN apt-get update && apt-get install -y \
   wget \
   vim \
   libapache2-mod-php5 \
-  php5-mcrypt \
   php5 \
+  php5-mysql \
+  php5-mcrypt \
   php-pear
 RUN pear install \
   mail_mime \
